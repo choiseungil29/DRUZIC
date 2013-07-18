@@ -1,0 +1,2 @@
+Midi 파일을 Programmatically하게 관리할 수 있도록 공부
+기획의 디테일함 확립
