@@ -13,6 +13,7 @@ public class MainActivity extends Activity {
 	
 	private SignatureView canvasView;
 	private TestView testView;
+    private MelodyView melodyView;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -22,7 +23,8 @@ public class MainActivity extends Activity {
 		setContentView(canvasView); // final code */
 		
 		testView = new TestView(this);
-		setContentView(testView); // Test code
+        melodyView = new MelodyView(this);
+		setContentView(melodyView); // Test code
 	}
 
 	@Override

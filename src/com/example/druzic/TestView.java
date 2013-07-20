@@ -77,13 +77,7 @@ public class TestView extends View {
                     m_mp.setOnCompletionListener(completeListener);
                     m_mp.start();
                     Log.i("DRUZIC", "middle : " + getDistance(prevPoint, nowPoint));
-                } /*else if(getDistance(prevPoint, nowPoint) < SHORT_SOUND_DISTANCE) {
-                    s_mp.release();
-                    s_mp = MediaPlayer.create(mContext, R.raw.short_c);
-                    s_mp.setOnCompletionListener(completeListener);
-                    s_mp.start();
-                    Log.i("DRUZIC", "short : " + getDistance(prevPoint, nowPoint));
-                } */else {
+                } else {
                     Log.i("DRUZIC", "touch move event else!");
                     Log.i("DRUZIC", "s_mp");
                     s_mp.release();
@@ -104,6 +98,8 @@ public class TestView extends View {
 		paint.setStyle(Paint.Style.STROKE);
 		paint.setStrokeJoin(Paint.Join.ROUND);
 		paint.setStrokeWidth(5f);
+
+        Log.i("DRUZIC", "distance: " + getDistance(new Point(0,0), new Point(1280, 720)));
 	}
 
 	private Paint boxPaint = new Paint();
@@ -149,13 +145,7 @@ public class TestView extends View {
                 m_mp = MediaPlayer.create(mContext, R.raw.mid_c);
                 m_mp.setOnCompletionListener(completeListener);
                 m_mp.start();
-            } /*else if(getDistance(prevPoint, nowPoint) < SHORT_SOUND_DISTANCE) {
-                Log.i("DRUZIC", "s_mp");
-                s_mp.release();
-                s_mp = MediaPlayer.create(mContext, R.raw.short_c);
-                s_mp.setOnCompletionListener(completeListener);
-                s_mp.start();
-            } */else {
+            } else {
                 Log.i("DRUZIC", "touch move event else!");
                 Log.i("DRUZIC", "s_mp");
                 s_mp.release();
