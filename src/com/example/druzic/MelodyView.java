@@ -120,20 +120,28 @@ public class MelodyView extends View {
 
     public int getCodeId(Point prev, Point now) {
 
-        for(int i=1;i<=3;i++) {
-            if(getDistance(prev, now) < 11982 * i) {
+        int standard = 11982/20;
 
-                if(now.y > prev.y) {
+        for(int i=1;i<=3;i++) {
+            if((getDistance(prev, now) < standard * i) &&
+                (getDistance(prev, now) >= standard * (i-1))) {
+
+                if(now.y < prev.y) {
                     nowCodeidx += i;
-                } else if(now.y < prev.y) {
+                    if(nowCodeidx >= 12)
+                        nowCodeidx = 12;
+                } else if(now.y > prev.y) {
                     nowCodeidx -= i;
-                    nowCodeidx = Math.abs(nowCodeidx);
+                    if(nowCodeidx <= 0)
+                        nowCodeidx = 0;
+
                 }
 
             }
         }
+        Log.i("DRUZIC", "NODE CODE IDX IS " + nowCodeidx);
 
-        nowCode = CONSTANT_CODE[nowCodeidx%CONSTANT_CODE.length];
+        nowCode = CONSTANT_CODE[nowCodeidx];
         Log.i("DRUZIC", "NOW CODE IS " + nowCode);
         return getResources().getIdentifier(nowCode, "raw", "com.example.druzic");
     }

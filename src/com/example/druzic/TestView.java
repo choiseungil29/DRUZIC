@@ -58,34 +58,38 @@ public class TestView extends View {
                 @Override
             public void onCompletion(MediaPlayer mediaPlayer) {
                 //To change body of implemented methods use File | Settings | File Templates.
-                if(isTouching == false) {
-                    return;
-                }
 
-                Point nowPoint = pointStack.pop();
-                Point prevPoint = pointStack.pop();
+                    if(isTouching == false) {
 
-                if(getDistance(prevPoint, nowPoint) < 11982) {
-                    l_mp.release();
-                    l_mp = MediaPlayer.create(mContext, R.raw.long_c);
-                    l_mp.setOnCompletionListener(completeListener);
-                    l_mp.start();
-                    Log.i("DRUZIC", "long : " + getDistance(prevPoint, nowPoint));
-                } else if(getDistance(prevPoint, nowPoint) < 23964) {
-                    m_mp.release();
-                    m_mp = MediaPlayer.create(mContext, R.raw.mid_c);
-                    m_mp.setOnCompletionListener(completeListener);
-                    m_mp.start();
-                    Log.i("DRUZIC", "middle : " + getDistance(prevPoint, nowPoint));
-                } else {
-                    Log.i("DRUZIC", "touch move event else!");
-                    Log.i("DRUZIC", "s_mp");
-                    s_mp.release();
-                    s_mp = MediaPlayer.create(mContext, R.raw.short_c);
-                    s_mp.setOnCompletionListener(completeListener);
-                    s_mp.start();
-                    Log.i("DRUZIC", "short : " + getDistance(prevPoint, nowPoint));
-                }
+                        return;
+                    }
+
+                    Point nowPoint = pointStack.pop();
+                    Point prevPoint = pointStack.pop();
+
+                    int standard = 11982/20;
+
+                    if(getDistance(prevPoint, nowPoint) < standard) {
+                        l_mp.release();
+                        l_mp = MediaPlayer.create(mContext, R.raw.long_c);
+                        l_mp.setOnCompletionListener(completeListener);
+                        l_mp.start();
+                        Log.i("DRUZIC", "long : " + getDistance(prevPoint, nowPoint));
+                    } else if(getDistance(prevPoint, nowPoint) < standard) {
+                        m_mp.release();
+                        m_mp = MediaPlayer.create(mContext, R.raw.mid_c);
+                        m_mp.setOnCompletionListener(completeListener);
+                        m_mp.start();
+                        Log.i("DRUZIC", "middle : " + getDistance(prevPoint, nowPoint));
+                    } else {
+                        Log.i("DRUZIC", "touch move event else!");
+                        Log.i("DRUZIC", "s_mp");
+                        s_mp.release();
+                        s_mp = MediaPlayer.create(mContext, R.raw.short_c);
+                        s_mp.setOnCompletionListener(completeListener);
+                        s_mp.start();
+                        Log.i("DRUZIC", "short : " + getDistance(prevPoint, nowPoint));
+                    }
             }
         };
 
@@ -133,13 +137,15 @@ public class TestView extends View {
             Point nowPoint = pointStack.pop();
             Point prevPoint = pointStack.pop();
 
-            if(getDistance(prevPoint, nowPoint) < 11982) {
+            int standard = 11982/20;
+
+            if(getDistance(prevPoint, nowPoint) < standard) {
                 Log.i("DRUZIC", "l_mp");
                 l_mp.release();
                 l_mp = MediaPlayer.create(mContext, R.raw.long_c);
                 l_mp.setOnCompletionListener(completeListener);
                 l_mp.start();
-            } else if(getDistance(prevPoint, nowPoint) < 23964) {
+            } else if(getDistance(prevPoint, nowPoint) < standard) {
                 Log.i("DRUZIC", "m_mp");
                 m_mp.release();
                 m_mp = MediaPlayer.create(mContext, R.raw.mid_c);

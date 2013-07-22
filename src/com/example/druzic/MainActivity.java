@@ -13,6 +13,7 @@ public class MainActivity extends Activity {
 	
 	private SignatureView canvasView;
 	private TestView testView;
+    private TestView2 testView2;
     private MelodyView melodyView;
 
 	@Override
@@ -24,7 +25,9 @@ public class MainActivity extends Activity {
 		
 		testView = new TestView(this);
         melodyView = new MelodyView(this);
-		setContentView(melodyView); // Test code
+        testView2 = new TestView2(this);
+
+		setContentView(testView2); // Test code
 	}
 
 	@Override
