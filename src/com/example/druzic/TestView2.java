@@ -67,6 +67,8 @@ public class TestView2 extends View {
         switch (event.getAction()) {
             case MotionEvent.ACTION_DOWN:
 
+                pointStack.clear();
+
                 return true;
             case MotionEvent.ACTION_MOVE:
 
@@ -79,7 +81,7 @@ public class TestView2 extends View {
                 break;
             case MotionEvent.ACTION_UP:
 
-                lineStack.push((Stack<Point>) pointStack.clone());
+                //lineStack.push((Stack<Point>) pointStack.clone());
                 pointStack.clear();
 
                 break;

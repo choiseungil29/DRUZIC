@@ -15,6 +15,7 @@ public class MainActivity extends Activity {
 	private TestView testView;
     private TestView2 testView2;
     private MelodyView melodyView;
+    private BackgroundTestView bgTestView;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -26,8 +27,9 @@ public class MainActivity extends Activity {
 		testView = new TestView(this);
         melodyView = new MelodyView(this);
         testView2 = new TestView2(this);
+        bgTestView = new BackgroundTestView(this);
 
-		setContentView(testView2); // Test code
+		setContentView(bgTestView); // Test code
 	}
 
 	@Override
