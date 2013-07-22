@@ -44,6 +44,8 @@ public class BackgroundTestView extends View {
     private int[] nowCode = CONST_C_CODE;
     private int nowCodeIdx = 0;
 
+    private boolean isTouching = false;
+
     private Stack<Point> pointStack;
 
     public BackgroundTestView(Context context) {
@@ -66,9 +68,22 @@ public class BackgroundTestView extends View {
                 if(nowCode.length >= nowCodeIdx)
                     nowCodeIdx++;
 
-                melodyPlayer.release();
-                melodyPlayer = MediaPlayer.create(mContext, getResources().getIdentifier(CONSTANT_MELODY[nowCode[nowCodeIdx%nowCode.length]], "raw", "com.example.druzic"));
-                melodyPlayer.start();
+                if(isTouching) {
+                    if(isUp(pointStack)) {
+                        if(nowCodeIdx < (nowCode.length - 1)) {
+                            nowCodeIdx++;
+                        }
+                    }
+                    else {
+                        if(nowCodeIdx > 0) {
+                            nowCodeIdx--;
+                        }
+                    }
+
+                    melodyPlayer.release();
+                    melodyPlayer = MediaPlayer.create(mContext, getResources().getIdentifier(CONSTANT_MELODY[nowCode[nowCodeIdx%nowCode.length]], "raw", "com.example.druzic"));
+                    melodyPlayer.start();
+                }
 
                 bgPlayer.release();
                 bgPlayer = MediaPlayer.create(mContext, getResources().getIdentifier(CONSTANT_BG[BG_SEQUENCE[bgCodeIdx%BG_SEQUENCE.length]], "raw", "com.example.druzic"));
@@ -97,14 +112,14 @@ public class BackgroundTestView extends View {
         switch (event.getAction()) {
             case MotionEvent.ACTION_DOWN:
 
-                pointStack.clear();
+                isTouching = true;
                 return true;
             case MotionEvent.ACTION_MOVE:
 
                 break;
             case MotionEvent.ACTION_UP:
 
-                pointStack.clear();
+                isTouching = false;
                 break;
             default:
                 return false;
@@ -115,20 +130,14 @@ public class BackgroundTestView extends View {
         return true;
     }
 
-    public int getCodeId(Stack<Point> pointStack) {
+    public boolean isUp(Stack<Point> pointStack) {
+        Point n = pointStack.pop();
+        Point p = pointStack.pop();
 
-        Point end = pointStack.pop();
-        Point start = pointStack.pop();
+        if(n.y < p.y)
+            return true;
 
-        while(!pointStack.isEmpty()) {
-            start = pointStack.pop();
-        }
-
-        if(end.y < start.y) {
-
-        }
-
-        return 0;
+        return false;
     }
 
     public int getPointDistance(Point a, Point b) {
