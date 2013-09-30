@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.druzic"
+    package="dif.clogic.druzic"
     android:versionCode="1"
     android:versionName="1.0" >
 
@@ -14,7 +14,7 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name="com.example.druzic.MainActivity"
+            android:name="dif.clogic.druzic.StartActivity"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -22,7 +22,26 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MelodyView"/>
+        <activity
+                android:name="dif.clogic.druzic.MainActivity">
+            <intent-filter>
+            </intent-filter>
+        </activity>
+        <activity
+                android:name="dif.clogic.druzic.HandlerView$ColorActivity">
+            <intent-filter>
+            </intent-filter>
+        </activity>
+        <activity
+                android:name="dif.clogic.druzic.ListenListActivity">
+            <intent-filter>
+            </intent-filter>
+        </activity>
     </application>
+
+    <uses-permission android:name="android.permission.RECORD_AUDIO"></uses-permission>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"></uses-permission>
+    <uses-permission android:name="android.permission.CAMERA"></uses-permission>
+    <uses-permission android:name="android.permission.INTERNET"></uses-permission>
 
 </manifest>

@@ -13,6 +13,8 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="jfugue-4.0.3" level="project" />
+    <orderEntry type="library" name="android-midi-libv3-1-42" level="project" />
   </component>
 </module>
 
